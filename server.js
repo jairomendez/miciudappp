@@ -14,9 +14,9 @@ app.use((req, res, next) =>{
 //conectar a la base de datos
 mongoose
 .connect(
- // "mongodb://localhost:27017/miciudad",
+ "mongodb://localhost:27017/miciudad",
 
- "mongodb://miciudappp:bMtQ01yUmb39C00N..@cluster0-shard-00-00-xshgl.mongodb.net:27017,cluster0-shard-00-01-xshgl.mongodb.net:27017,cluster0-shard-00-02-xshgl.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true",
+ //"mongodb://miciudappp:bMtQ01yUmb39C00N..@cluster0-shard-00-00-xshgl.mongodb.net:27017,cluster0-shard-00-01-xshgl.mongodb.net:27017,cluster0-shard-00-02-xshgl.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true",
     { useNewUrlParser: true }
   )
   .then(() => {
@@ -29,6 +29,10 @@ mongoose
 //modulos externos
 
 var Usuario = require("./lib/Usuario");
+
+app.get("/login", (req, res) => {
+  Usuario.login(req, res);
+});
 
 app.get("/Usuario", (req, res) => {
   Usuario.getUsuario(req, res);
@@ -159,5 +163,5 @@ app.delete("/comentarios/:id", (req, res) => {
   comentarios.deletecomentarios(req, res);
 });
 
-app.listen(3000);
-console.log(`Server on %s ${app.settings.env}`);
+app.listen(6000);
+console.log(`Server on localhost:6000 ${app.settings.env}`);
