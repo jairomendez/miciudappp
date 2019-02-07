@@ -33,9 +33,12 @@ var Usuario = require("./lib/Usuario");
 app.post("/login", (req, res) => {
   Usuario.login(req, res);
 });
+app.post("/register", (req, res) => {
+  Usuario.register(req, res);
+});
 
 app.get("/Usuario", (req, res) => {
-  Usuario.getUsuario(req, res);
+  Usuario.getUsuarios(req, res);
 });
 
 app.get("/Usuario/:id", (req, res) => {
